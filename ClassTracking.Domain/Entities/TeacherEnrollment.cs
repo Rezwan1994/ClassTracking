@@ -9,8 +9,8 @@ namespace ClassTracking.Domain.Entities
     public class TeacherEnrollment : IEntity<int>
     {
         public int Id { get; set; }
-        public int TeacherId { get; set; }
-        public int ClassId { get; set; }
-        public string SessionYear { get; set; }
+        public Guid TeacherId { get; set; }
+        public Guid ClassId { get; set; }
+        public DateTime AssignDate { get; set; }
     }
 }

@@ -29,8 +29,10 @@ namespace ClassTracking.IOC
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             //services.AddScoped<ClassTrackingDbContext, ClassTrackingDbContext>();
             services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
-
+            services.AddScoped<ClassTrackingDbContext, ClassTrackingDbContext>();
             services.AddTransient<IStudentService, StudentService>();
+            services.AddTransient<ITeacherService, TeacherService>();
+            services.AddTransient<ITeacherEnrollmentService, TeacherEnrollmentService>();
         }
     }
 }

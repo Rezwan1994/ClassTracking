@@ -9,6 +9,7 @@ namespace ClassTracking.Domain.Entities
     public class Class : IEntity<int>
     {
         public int Id { get; set; }
+        public Guid ClassId { get; set; }
         public string Name { get; set; }
     }
 }

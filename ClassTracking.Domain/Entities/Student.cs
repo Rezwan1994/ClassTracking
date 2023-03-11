@@ -9,6 +9,7 @@ namespace ClassTracking.Domain.Entities
     public class Student : IEntity<int>
     {
         public int Id { get; set; }
+        public Guid StudentId { get; set; }
         public string Name { get; set; }
         public string FatherName { get; set; }
         public string MotherName { get; set; }

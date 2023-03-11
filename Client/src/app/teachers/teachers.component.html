@@ -1,0 +1,29 @@
+<div class="page-title">
+    <div class="title_left">
+        <h3>Teachers</h3>
+    </div>
+    <div style="float:right;">
+      <a href="/createteacher" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i>Add</a>
+    </div>
+  </div>
+    <table class="table  table-bordered" >
+        <thead>
+        <tr class="HeaderRow">
+            <th align='left'>Name</th>
+            <th align='left'>Designation</th>
+            <th align='left'>Email</th>
+            <th><a href="#" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i>Action</a></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let teacher of teacherList; let i=index">
+            <td>{{teacher.name}}</td>
+            <td>{{teacher.designation}}</td>
+            <td>{{teacher.email}}</td>
+            <td>
+                <button mat-button *ngIf="teacher.isAssigned == false" (click)="openDialog(teacher.teacherId)">Assign</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <pagination-controls class="my-pagination"></pagination-controls>

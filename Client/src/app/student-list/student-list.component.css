@@ -1,0 +1,8 @@
+.table_data{
+    border-bottom: 1px solid;
+}
+.table_data_master{
+    border-bottom: 2px solid;
+}
+table { table-layout: fixed; }
+td { width: 3%; }

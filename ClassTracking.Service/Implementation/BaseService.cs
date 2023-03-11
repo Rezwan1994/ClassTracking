@@ -51,20 +51,36 @@ namespace ClassTracking.Service.Implementation
 
         public async Task InsertAsync(TEntity entity, bool save = true)
         {
-            _repository.Add(entity);
-            if (save)
+            try
             {
-                await _unitOfWork.SaveChangesAsync();
+                _repository.Add(entity);
+                if (save)
+                {
+                    await _unitOfWork.SaveChangesAsync();
+                }
             }
+            catch(Exception ex)
+            {
+
+            }
+           
         }
 
         public async Task UpdateAsync(TEntity entity, bool save = true)
         {
             _repository.Edit(entity);
-            if (save)
+            try
             {
-                await _unitOfWork.SaveChangesAsync();
+                if (save)
+                {
+                    await _unitOfWork.SaveChangesAsync();
+                }
             }
+            catch(Exception ex)
+            {
+
+            }
+          
         }
     }
 }

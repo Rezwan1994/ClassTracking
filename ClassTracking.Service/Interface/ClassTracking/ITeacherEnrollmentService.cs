@@ -9,5 +9,7 @@ namespace ClassTracking.Service.Interface.ClassTracking
 {
     public interface ITeacherEnrollmentService : IBaseService<TeacherEnrollment>
     {
+        IQueryable<TeacherEnrollment> GetTeacherEnrollmentByTeacherId(Guid teacherId);
+        List<TeacherEnrollmentVM> GetTeacherEnrollmentByClassId(Guid classId);
     }
 }

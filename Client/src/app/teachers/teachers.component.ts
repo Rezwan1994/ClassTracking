@@ -11,6 +11,8 @@ import { AssignTeacherComponent } from '../assign-teacher/assign-teacher.compone
 })
 export class TeachersComponent {
   teacherList: any;
+  configs: any;
+  totalCount = 0;
   constructor(public teacherService:TeacherService, private router: Router,private dialog: MatDialog) { }
   ngOnInit(): void {
     this.getAllTeacherList()
@@ -31,8 +33,32 @@ export class TeachersComponent {
   openDialog(teacherId:string) {
     this.dialog.open(AssignTeacherComponent, {
       data: { teacherId: teacherId },
-      width: '800px',
-      height: '400px'
+      width: '500px',
+      height: '200px'
     });
+  }
+  ViewData() {
+    this.teacherService.getAllTeachers().subscribe(response => {
+      const params = this.teacherService.getGenParams();
+      // this.teacherList = response.data;  
+      // this.totalCount = response.count; 
+      this.configs = {
+        currentPage: params.pageIndex,
+        itemsPerPage: 100,
+        totalItems:this.totalCount,
+        };
+    }, error => {
+      console.log(error);
+    });
+  }
+  onPageChanged(event: any){
+    const params = this.teacherService.getGenParams();
+    if (params.pageIndex !== event)
+    {
+      params.pageIndex = event;
+      params.pageSize = 100;
+      this.teacherService.setGenParams(params);
+      this.ViewData();
+    }
   }
 }

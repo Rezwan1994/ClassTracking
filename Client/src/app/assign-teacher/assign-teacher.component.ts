@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { IResultModel } from '../models/resultmodel';
 import { AssignteacherService } from '../services/assignteacher.service';
 
 @Component({
@@ -16,11 +17,14 @@ export class AssignTeacherComponent {
   addTeacher()
   {
     this.teacherMapService.teacherMapModel.teacherId = this.data.teacherId;
+    this.teacherMapService.teacherMapModel.teacherName = "";
     this.teacherMapService.addTeacherMapping().subscribe(
       (res) =>{
-        alert("Saved Successfully")
+        debugger;
+        var result = res as IResultModel;
+        alert(result.message);
         this.dialogRef.close();
-        this.router.navigate(["/teachers"]);
+        window.location.reload()
       },
       (err) => {
         alert("error")

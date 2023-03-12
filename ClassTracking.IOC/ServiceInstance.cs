@@ -1,4 +1,6 @@
 ﻿using ClassTracking.Domain.DbContexts;
+using ClassTracking.Repository.Implementation.ClassTracking;
+using ClassTracking.Repository.Interface.ClassTracking;
 using ClassTracking.Repository.UnitOfWork;
 using ClassTracking.Service.Implementation;
 using ClassTracking.Service.Implementation.ClassTracking;
@@ -23,16 +25,17 @@ namespace ClassTracking.IOC
         {
             var connectionString = configuration.GetConnectionString("DefaultConnection");
           
-            services.AddDbContext<ClassTrackingDbContext>(options =>
+            services.AddDbContextPool<ClassTrackingDbContext>(options =>
             options.UseSqlServer(connectionString, b => b.MigrationsAssembly("Api")));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             //services.AddScoped<ClassTrackingDbContext, ClassTrackingDbContext>();
             services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
-            services.AddScoped<ClassTrackingDbContext, ClassTrackingDbContext>();
+    
             services.AddTransient<IStudentService, StudentService>();
             services.AddTransient<ITeacherService, TeacherService>();
             services.AddTransient<ITeacherEnrollmentService, TeacherEnrollmentService>();
+            services.AddTransient<ITeacherEnrollmentRepository, TeacherEnrollmentRepository>();
         }
     }
 }

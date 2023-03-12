@@ -22,6 +22,7 @@
             <td>{{teacher.email}}</td>
             <td>
                 <button mat-button *ngIf="teacher.isAssigned == false" (click)="openDialog(teacher.teacherId)">Assign</button>
+                <button mat-button *ngIf="teacher.isAssigned == true" (click)="openDialog(teacher.teacherId)">Re assign</button>
             </td>
         </tr>
         </tbody>

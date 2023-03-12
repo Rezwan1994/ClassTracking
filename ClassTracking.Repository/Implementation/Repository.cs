@@ -49,6 +49,7 @@ namespace ClassTracking.Repository.Implementation
         public IQueryable<TEntity> Query(string sql)
         {
             return _dbSet.FromSqlRaw(sql);
+  
         }
 
         public void Remove(int id)

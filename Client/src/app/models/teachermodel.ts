@@ -17,3 +17,17 @@ export class Teacher implements ITeacher {
     isAssaigned:boolean
  
 }
+
+export interface ITeacherPagination {
+    pageIndex: number;
+    pageSize: number;
+    count: number;
+    data: Teacher[];
+}
+
+export class TeacherPagination implements ITeacherPagination {
+    pageIndex: number;
+    pageSize: number;
+    count: number;
+    data: Teacher[] = [];
+}

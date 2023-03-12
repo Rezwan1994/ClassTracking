@@ -6,25 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Api.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class CreatingTrackTable : Migration
+    public partial class CreatingTrackingTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Classes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ClassId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Classes", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "StudentClassMaps",
                 columns: table => new
@@ -59,7 +45,7 @@ namespace Api.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TeacherEnrollments",
+                name: "TeacherEnrollment",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -70,7 +56,7 @@ namespace Api.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TeacherEnrollments", x => x.Id);
+                    table.PrimaryKey("PK_TeacherEnrollment", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -96,16 +82,13 @@ namespace Api.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Classes");
-
-            migrationBuilder.DropTable(
                 name: "StudentClassMaps");
 
             migrationBuilder.DropTable(
                 name: "Students");
 
             migrationBuilder.DropTable(
-                name: "TeacherEnrollments");
+                name: "TeacherEnrollment");
 
             migrationBuilder.DropTable(
                 name: "Teachers");

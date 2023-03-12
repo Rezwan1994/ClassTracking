@@ -1,6 +1,7 @@
 ﻿using ClassTracking.Domain.DbContexts;
 using ClassTracking.Domain.Entities;
 using ClassTracking.Repository.Interface.ClassTracking;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,6 @@ namespace ClassTracking.Repository.Implementation.ClassTracking
         {
             _context = context;
         }
+      
     }
 }

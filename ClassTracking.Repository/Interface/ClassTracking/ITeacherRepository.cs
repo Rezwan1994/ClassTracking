@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace ClassTracking.Repository.Interface.ClassTracking
 {
-    public interface IStudentRepository
+    public interface ITeacherRepository
     {
-        public List<Student> GetAllStudentByClassId(Guid classId);
+        public Teacher GetTeacherByClassId(Guid classId);
     }
 }

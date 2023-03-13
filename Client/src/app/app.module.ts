@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
@@ -32,6 +33,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
   imports: [
     BrowserModule,
     CommonModule,
+    BrowserAnimationsModule,
+    BsDatepickerModule,
     FormsModule,
     AppRoutingModule,
     NgxPaginationModule,

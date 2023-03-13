@@ -8,20 +8,20 @@
                         <div class="form-group">
                             <label class="control-label col-md-1">Name <span class="required">*</span></label>
                             <div class="col-md-3"> 
-                                <input type="text" class="form-control"/>
+                                <input [(ngModel)]="studentService.studentModel.name"  type="text" class="form-control"/>
     
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-1" >Father Name</label>
                             <div class="col-md-3">
-                                <input type="text" class="form-control "/>
+                                <input [(ngModel)]="studentService.studentModel.fatherName"  type="text" class="form-control "/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-1">Mother Name</label>
                             <div class="col-md-3">
-                                <input type="text" class="form-control"/>
+                                <input [(ngModel)]="studentService.studentModel.motherName" type="text" class="form-control"/>
                             </div>
                         </div>
                     </div>
@@ -30,21 +30,31 @@
                         <div class="form-group">
                             <label class="control-label col-md-1 ">Nationality<span class="required">*</span></label>
                             <div class="col-md-3">
-                                <input type="text" class="form-control datepicker "/>
+                                <input type="text"  [(ngModel)]="studentService.studentModel.nationality" class="form-control datepicker "/>
     
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-1">Enroll Date <span class="required">*</span></label>
                             <div class="col-md-3">
-                                <input type="text" class="form-control datepicker "/>
+                                <input class="form-control clickable" placeholder="Calender"  name="fromDate" [(ngModel)]="studentService.studentModel.enrollDate" 
+                                [bsValue]="bsValue" bsDatepicker [bsConfig]="bsConfig" >
     
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1">Class <span class="required">*</span></label>
+                            <div class="col-md-3">
+                                <select class="form-control" [(ngModel)]="studentService.studentModel.classId" >                              
+                                        <option  [ngValue]="null">Select Class</option>
+                                        <option *ngFor="let a of classList"  [value]="a.classId">{{a.name}}</option>                                        
+                                </select> 
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-1 ">Session Year<span class="required">*</span></label>
                             <div class="col-md-3">
-                                <select class="form-control">
+                                <select class="form-control" [(ngModel)]="studentService.studentModel.sessionYear" >
                                     <option>Select One</option>
                                     <option value="2022">2022</option>
                                     <option value="2023">2023</option>
@@ -57,7 +67,7 @@
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-11">
-                                <button type="submit" class="btn btn-success">Save</button>
+                                <button type="submit" (click)="addStudent()" class="btn btn-success">Save</button>
                             </div>
                         </div>
                     </div>

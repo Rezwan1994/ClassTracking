@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace ClassTracking.Service.Interface.ClassTracking
 {
-    public interface ITeacherService : IBaseService<Teacher>
+  
+    public interface IClassService : IBaseService<Class>
     {
-        public IQueryable<Teacher> GetTeacherByTeacherId(Guid teacherId);
-        Teacher GetTeacherByClassId(Guid classId);
     }
 }

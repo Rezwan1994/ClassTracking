@@ -3,6 +3,9 @@ using ClassTracking.Domain.Entities;
 using ClassTracking.Service.Interface.ClassTracking;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using System.Data;
+using System.Reflection.Emit;
 
 namespace Api.Controllers
 {
@@ -22,6 +25,11 @@ namespace Api.Controllers
         [HttpGet("getallteacher")]
         public Task<IEnumerable<Teacher>> GetAllTeachers()
         {
+            //PaginationModel Params
+
+            //var parmPageIndex = new SqlParameter("@PageIndex", Params.PageIndex) { Direction = ParameterDirection.Input, SqlDbType = SqlDbType.Int };
+            //var parmPageSize = new SqlParameter("@PageSize", 100) { Direction = ParameterDirection.Input, SqlDbType = SqlDbType.Int };
+
             return _service.GetAsync(); ;
         }
 

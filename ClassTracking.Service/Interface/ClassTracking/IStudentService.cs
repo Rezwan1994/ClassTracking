@@ -9,5 +9,6 @@ namespace ClassTracking.Service.Interface.ClassTracking
 {
     public interface IStudentService : IBaseService<Student>
     {
+        public List<Student> GetAllStudentByClassId(Guid classId);
     }
 }

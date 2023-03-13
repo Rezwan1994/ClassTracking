@@ -32,7 +32,7 @@ namespace ClassTracking.Domain.DbContexts
         public DbSet<Student> Students { get; set; }
         public DbSet<StudentClassMap> StudentClassMaps { get; set; }
         public DbSet<TeacherEnrollment> TeacherEnrollments { get; set; }
-        public DbSet<TeacherEnrollment> Classes { get; set; }
+        public DbSet<Class> Classes { get; set; }
 
         public List<T> ExecSQL<T>(string query)
         {

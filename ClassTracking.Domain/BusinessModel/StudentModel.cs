@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassTracking.Domain.Entities
+namespace ClassTracking.Domain.BusinessModel
 {
-    public class Student : IEntity<int>
+    public class StudentModel
     {
         public int Id { get; set; }
         public Guid StudentId { get; set; }
@@ -17,11 +16,6 @@ namespace ClassTracking.Domain.Entities
         public string Nationality { get; set; }
         public DateTime EnrollDate { get; set; }
         public string SessionYear { get; set; }
-    }
-    [NotMapped]
-    public class StudentVM : Student
-    {
-        public string ClassId { get; set; }
-
+        public Guid ClassId { get; set; }
     }
 }

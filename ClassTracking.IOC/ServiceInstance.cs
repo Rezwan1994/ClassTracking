@@ -34,8 +34,13 @@ namespace ClassTracking.IOC
     
             services.AddTransient<IStudentService, StudentService>();
             services.AddTransient<ITeacherService, TeacherService>();
+            services.AddTransient<IStudentClassMapService, StudentClassMapService>();
+            services.AddTransient<IClassService, ClassService>();
             services.AddTransient<ITeacherEnrollmentService, TeacherEnrollmentService>();
             services.AddTransient<ITeacherEnrollmentRepository, TeacherEnrollmentRepository>();
+            services.AddTransient<ITeacherRepository, TeacherRepository>();
+            services.AddTransient<IStudentRepository, StudentRepository>();
+
         }
     }
 }

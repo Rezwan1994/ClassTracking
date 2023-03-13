@@ -9,12 +9,11 @@
                         <div class="form-group">
                             <label class="control-label col-md-1 ">Class Id<span class="required">*</span></label>
                             <div class="col-md-3">
-                                <select class="form-control" [(ngModel)]="teacherMapService.teacherMapModel.classId">
-                                    <option>Select One</option>
-                                    <option value="3643df7f-20d0-4e58-bf7a-f02f3f4dda14">1</option>
-                                    <option value="f3e30d1c-f543-4eba-9747-b5350c0a2f10">2</option>
-                                </select>
-                                
+                                    <select class="form-control" [(ngModel)]="teacherMapService.teacherMapModel.classId" >                              
+                                        <option  [ngValue]="null">Select Class</option>
+                                        <option *ngFor="let a of classList"  [value]="a.classId">{{a.name}}</option>                                        
+                                </select> 
+                          
                             </div>
                         </div>
                  

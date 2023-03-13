@@ -15,6 +15,6 @@ namespace ClassTracking.Domain.DbContexts
         DbSet<Student> Students { get; set; }
         DbSet<StudentClassMap> StudentClassMaps { get; set; }
         DbSet<TeacherEnrollment> TeacherEnrollments { get; set; }
-        DbSet<TeacherEnrollment> Classes { get; set; }
+        DbSet<Class> Classes { get; set; }
     }
 }

@@ -14,3 +14,4 @@ export class TeacherClassMap implements ITeacherClassMap {
     teacherName: string;
  
 }
+

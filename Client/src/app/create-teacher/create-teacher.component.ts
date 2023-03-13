@@ -13,6 +13,7 @@ export class CreateTeacherComponent {
   ngOnInit(): void {
    
   }
+  
   addTeacher()
   {
     this.teacherService.addTeacher().subscribe(

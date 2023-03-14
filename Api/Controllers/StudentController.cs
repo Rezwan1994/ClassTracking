@@ -83,6 +83,8 @@ namespace Api.Controllers
                     model.classobj = item;
                     model.teacherobj = teacher;
                     model.studentList = studentList;
+                    model.MaxStudent = 60;
+                    model.TotalStudent = studentList.Count();
                     classModelList.Add(model);
                 }
             }

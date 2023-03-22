@@ -1,4 +1,5 @@
 ﻿using ClassTracking.Domain.BusinessModel;
+using ClassTracking.Domain.Common;
 using ClassTracking.Domain.Entities;
 using ClassTracking.Service.Interface.ClassTracking;
 using Microsoft.AspNetCore.Mvc;
@@ -66,11 +67,15 @@ namespace Api.Controllers
             return _classService.GetAsync(); ;
         }
 
-        [HttpGet("getallstudents")]
-        public  List<ClassModel> GetAllStudent()
+        [HttpPost("getallstudents")]
+        public  List<ClassModel> GetAllStudent(FilterModel filter)
         {
             List<ClassModel> classModelList = new List<ClassModel>();
             List<Class> classList = _classService.GetAsync().Result.ToList();
+            if(!string.IsNullOrEmpty(filter.classId))
+            {
+                classList = classList.Where(x => x.ClassId == new Guid(filter.classId)).ToList();
+            }
             List<Student> studentList = new List<Student>();
             Teacher teacher = new Teacher();
             if(classList != null)
@@ -78,7 +83,7 @@ namespace Api.Controllers
                 foreach(var item in classList)
                 {
                     teacher = _teacherService.GetTeacherByClassId(item.ClassId);
-                    studentList = _service.GetAllStudentByClassId(item.ClassId);
+                    studentList = _service.GetAllStudentByClassId(filter,item.ClassId);
                     ClassModel model = new ClassModel();
                     model.classobj = item;
                     model.teacherobj = teacher;

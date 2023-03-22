@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ClassTracking.Repository.Interface.ClassTracking;
+using ClassTracking.Domain.Common;
 
 namespace ClassTracking.Service.Implementation.ClassTracking
 {

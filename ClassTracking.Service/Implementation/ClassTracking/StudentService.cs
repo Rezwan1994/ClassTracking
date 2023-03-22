@@ -1,4 +1,5 @@
-﻿using ClassTracking.Domain.Entities;
+﻿using ClassTracking.Domain.Common;
+using ClassTracking.Domain.Entities;
 using ClassTracking.Repository.Interface;
 using ClassTracking.Repository.Interface.ClassTracking;
 using ClassTracking.Repository.UnitOfWork;
@@ -23,9 +24,9 @@ namespace ClassTracking.Service.Implementation.ClassTracking
             _studentRepository = unitOfWork.Repository<Student>();
             _studentExtRepository = studentExtRepository;
         }
-        public List<Student> GetAllStudentByClassId(Guid classId)
+        public List<Student> GetAllStudentByClassId(FilterModel filter, Guid classId)
         {
-            return _studentExtRepository.GetAllStudentByClassId(classId);
+            return _studentExtRepository.GetAllStudentByClassId(filter,classId);
         }
     }
 }

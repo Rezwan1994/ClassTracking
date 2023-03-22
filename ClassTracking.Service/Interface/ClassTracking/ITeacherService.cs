@@ -1,4 +1,5 @@
-﻿using ClassTracking.Domain.Entities;
+﻿using ClassTracking.Domain.Common;
+using ClassTracking.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

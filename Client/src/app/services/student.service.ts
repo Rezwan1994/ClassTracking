@@ -1,30 +1,33 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Filter } from '../models/filtermodel';
 import { StudentModel } from '../models/studentmodel';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StudentService {
-
   studentModel = new StudentModel();
-  constructor(private http: HttpClient) { }
-  addStudent()
-  {
+  filterModel = new Filter();
+
+  constructor(private http: HttpClient) {}
+  addStudent() {
     debugger;
- 
-    return this.http.post( 'https://localhost:7271/api/Student/createstudent',this.studentModel);
+
+    return this.http.post(
+      'https://localhost:7271/api/Student/createstudent',
+      this.studentModel
+    );
   }
-  getAllClass()
-  {
-    
+  getAllClass() {
     debugger;
-    return this.http.get( 'https://localhost:7271/api/Student/getallclass');
+    return this.http.get('https://localhost:7271/api/Student/getallclass');
   }
-  getAllStudents()
-  {
-    
+  getAllStudents() {
     debugger;
-    return this.http.get( 'https://localhost:7271/api/Student/getallstudents');
+    return this.http.post(
+      'https://localhost:7271/api/Student/getallstudents',
+      this.filterModel
+    );
   }
 }

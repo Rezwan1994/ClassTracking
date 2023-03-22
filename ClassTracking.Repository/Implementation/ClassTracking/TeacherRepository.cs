@@ -1,4 +1,5 @@
-﻿using ClassTracking.Domain.DbContexts;
+﻿using ClassTracking.Domain.Common;
+using ClassTracking.Domain.DbContexts;
 using ClassTracking.Domain.Entities;
 using ClassTracking.Repository.Interface.ClassTracking;
 using System;
@@ -18,9 +19,12 @@ namespace ClassTracking.Repository.Implementation.ClassTracking
         }
         public Teacher GetTeacherByClassId(Guid classId)
         {
+          
+
             string rawQuery = @"select * from Teachers t
                                 left join TeacherEnrollments te on te.TeacherId = t.TeacherId
-                                left join Classes c on c.ClassId = '{0}'";
+                               left join Classes c on c.ClassId = te.ClassId
+                                where c.ClassId = '{0}'";
             string sqlQuery = string.Format(rawQuery, classId);
 
             // return _context.Database.SqlQuery<TeacherEnrollment>(sqlQuery).ToList();

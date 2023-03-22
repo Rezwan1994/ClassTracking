@@ -1,94 +1,128 @@
 <div class="page-title">
-    <div class="title_left">
-        <h3>Students</h3>
-    </div>
-    <div style="float:right;">
-      <a href="/enrollstudent" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i>Add</a>
-    </div>
+  <div class="title_left">
+    <h3>Students</h3>
   </div>
-    <table class="table  table-bordered" *ngIf="studentList.length > 0 && studentList[0].studentList.length > 0" >
-       
-        <tbody>
-        <tr *ngFor="let student of studentList; let i=index">
-            <td>
-                <tr class="table_data_master"  colspan="5">
-                    <span style="font-weight: bold;">{{student.classobj.name}}</span>
-                </tr>
-                <tr class="table_data_master">
-                    <td>
-                        <tr>
-                            <td>Name: </td>
-                            <td>{{student.classobj.name}}</td>
-                        </tr>
-                        <tr>
-                            <td>Standard: </td>
-                            <td>{{student.classobj.name}}</td>
-                        </tr>
-                        <tr>
-                            <td>Total Student: </td>
-                            <td>{{student.totalStudent}}</td>
-                        </tr>
-                        <tr>
-                            <td>Max Student: </td>
-                            <td>{{student.maxStudent}}</td>
-                        </tr>
-                        <tr>
-                            <td>Sesstion Year: </td>
-                            <td>{{student.sessionYear}}</td>
-                        </tr>
-                    </td>
-                </tr>
+  <div style="float: right">
+    <a href="/enrollstudent" class="btn btn-primary btn-xs"
+      ><i class="fa fa-edit"></i>Add</a
+    >
+  </div>
+</div>
 
-                <tr class="table_data_master">
-                    <td>
-                        <tr>
-                            <td>Teacher Id: </td>
-                            <td>{{student.teacherobj.teacherId}}</td>
-                        </tr>
-                        <tr>
-                            <td>Name </td>
-                            <td>{{student.teacherobj.name}}</td>
-                        </tr>
-                        <tr>
-                            <td>Designatin</td>
-                            <td>{{student.teacherobj.designation}}</td>
-                        </tr>
-                    </td>
-                </tr>
+<div class="form-group">
+  <div class="col-md-3">
+    <select
+      class="form-control"
+      [(ngModel)]="studentService.filterModel.classId"
+    >
+      <option [ngValue]="null">Select Class</option>
+      <option *ngFor="let a of classList" [value]="a.classId">
+        {{ a.name }}
+      </option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="studentService.filterModel.search"
+      placeholder="Search By student"
+    />
+  </div>
+  <div class="col-md-3">
+    <button class="form-control" (click)="getAllStudents()">Apply</button>
+  </div>
+</div>
 
-                <tr class="table_data" *ngFor="let studentobj of student.studentList; let i=index">
-                    <td>
-                       <tr class="table_data">
-                          <td>
-                            <tr>
-                                <td>Student Id</td>
-                                <td>{{studentobj.studentId}}</td>
-                           </tr>
-                            <tr>
-                                <td>Name</td>
-                                <td>{{studentobj.name}}</td>
-                            </tr>
-                            <tr>
-                                <td>Mother Name</td>
-                                <td>{{studentobj.motherName}}</td>
-                            </tr>
-                            <tr>
-                                <td>Father Name</td>
-                                <td>{{studentobj.fatherName}}</td>
-                            </tr>
-                            <tr>
-                                <td>Nationality</td>
-                                <td>{{studentobj.nationality}}</td>
-                            </tr>
-                          </td>
-                       </tr>
-                    </td>
-                </tr>
-             
-            </td>
-          
+<table
+  class="table table-bordered"
+  *ngIf="
+    studentList != null &&
+    studentList.length > 0 &&
+    studentList[0].studentList.length > 0
+  "
+>
+  <tbody>
+    <tr *ngFor="let student of studentList; let i = index">
+      <td>
+        <tr class="table_data_master" colspan="5">
+          <span style="font-weight: bold">{{ student.classobj.name }}</span>
         </tr>
-      
-        </tbody>
-    </table>
-    <pagination-controls class="my-pagination"></pagination-controls>
+        <tr class="table_data_master">
+          <td>
+            <tr>
+              <td>Name:</td>
+              <td>{{ student.classobj.name }}</td>
+            </tr>
+            <tr>
+              <td>Standard:</td>
+              <td>{{ student.classobj.name }}</td>
+            </tr>
+            <tr>
+              <td>Total Student:</td>
+              <td>{{ student.totalStudent }}</td>
+            </tr>
+            <tr>
+              <td>Max Student:</td>
+              <td>{{ student.maxStudent }}</td>
+            </tr>
+            <tr>
+              <td>Sesstion Year:</td>
+              <td>{{ student.sessionYear }}</td>
+            </tr>
+          </td>
+        </tr>
+
+        <tr class="table_data_master" *ngIf="student.teacherobj != null">
+          <td>
+            <tr>
+              <td>Teacher Id:</td>
+              <td>{{ student.teacherobj.teacherId }}</td>
+            </tr>
+            <tr>
+              <td>Name</td>
+              <td>{{ student.teacherobj.name }}</td>
+            </tr>
+            <tr>
+              <td>Designatin</td>
+              <td>{{ student.teacherobj.designation }}</td>
+            </tr>
+          </td>
+        </tr>
+
+        <tr
+          class="table_data"
+          *ngFor="let studentobj of student.studentList; let i = index"
+        >
+          <td>
+            <tr class="table_data">
+              <td>
+                <tr>
+                  <td>Student Id</td>
+                  <td>{{ studentobj.studentId }}</td>
+                </tr>
+                <tr>
+                  <td>Name</td>
+                  <td>{{ studentobj.name }}</td>
+                </tr>
+                <tr>
+                  <td>Mother Name</td>
+                  <td>{{ studentobj.motherName }}</td>
+                </tr>
+                <tr>
+                  <td>Father Name</td>
+                  <td>{{ studentobj.fatherName }}</td>
+                </tr>
+                <tr>
+                  <td>Nationality</td>
+                  <td>{{ studentobj.nationality }}</td>
+                </tr>
+              </td>
+            </tr>
+          </td>
+        </tr>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls class="my-pagination"></pagination-controls>
